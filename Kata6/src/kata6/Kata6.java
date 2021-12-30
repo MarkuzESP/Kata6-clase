@@ -5,8 +5,7 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 import toyProduct.Toy;
 import business.ToyBusiness;
-import factories.regionalFactories.AmericanToyFactory;
-import factories.regionalFactories.AsianToyFactory;
+import factories.regionalFactories.*;
 
 /**
  * @author Marcos del Cristo Díaz Gil
@@ -16,7 +15,9 @@ public class Kata6 {
 
     public static void main(String[] args) {
         //ToyBusiness enterprise = new ToyBusiness(new AmericanToyFactory());
-        ToyBusiness enterprise = new ToyBusiness(new AsianToyFactory());
+        ToyBusiness enterprise = new ToyBusiness();
+        enterprise.add("car", new AmericanCarToyFactory());
+        enterprise.add("heli", new AsianHelicopterToyFactory());
         ArrayList<Toy> toys = new ArrayList<>();
         
         String line = "";
