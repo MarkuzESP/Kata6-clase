@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import toys.Helicopter;
 import toys.Car;
 import toys.SerialNumberGenerator;
+import toys.ToyBusiness;
 /**
  * @author Marcos del Cristo Díaz Gil
  * Ingeniería del Software 2, Universidad de Las Palmas de Gran Canaria
@@ -13,7 +14,7 @@ import toys.SerialNumberGenerator;
 public class Kata6 {
 
     public static void main(String[] args) {
-        SerialNumberGenerator generator = new SerialNumberGenerator();
+        ToyBusiness enterprise = new ToyBusiness();
         ArrayList<Car> carList = new ArrayList<>();
         ArrayList<Helicopter> heliList = new ArrayList<>();
         
@@ -21,34 +22,28 @@ public class Kata6 {
         Scanner input = new Scanner(System.in);
         
         System.out.println("CLI de la Juguetera Díaz");
-        System.out.println("Teclee Car para generar un coche, Helicopter para generar un helicóptero");
-        System.out.println("Teclee EXIT para terminar la ejecución");
+        System.out.println("Teclee 'car' para generar un coche, 'heli' para generar un helicóptero");
+        System.out.println("Teclee 'exit' para terminar la ejecución");
         while (!line.equalsIgnoreCase("exit")){
             line = input.nextLine();
             
             switch (line) {
                 case "car":
-                    System.out.println("Construcción de coches: ");
-                    Car car = new Car(generator.next());
-                    car.pack();
-                    car.label();
-                    carList.add(car);
+                    System.out.println("Creando un coche...");
+                    carList.add(enterprise.createCar());
                     break;
                 
-                case "helicopter": 
-                    System.out.println("Construcción de helicópteros: ");
-                    Helicopter heli = new Helicopter(generator.next());
-                    heli.pack();
-                    heli.label();
-                    heliList.add(heli);
+                case "heli": 
+                    System.out.println("Creando un helicóptero...");
+                    heliList.add(enterprise.createHeli());
                     break;
                     
-                case "exit":
-                    System.out.println("Recibida orden de cierre");
+                case "exit" :
+                    System.out.println("Recibida orden de cierre.");
                     break;
                     
                 default: 
-                    System.out.println("No se reconoce el comando");
+                    System.out.println("No se reconoce el comando.");
             }
         }
         System.out.println("Coches construidos: " + carList.stream()
