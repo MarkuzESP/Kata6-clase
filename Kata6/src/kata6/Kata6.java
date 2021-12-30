@@ -1,10 +1,12 @@
 package kata6;
 
+import branches.AmericanToyBusiness;
+import branches.AsianToyBusiness;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 import toyProduct.Toy;
-import toys.ToyBusiness;
+import business.ToyBusiness;
 
 /**
  * @author Marcos del Cristo Díaz Gil
@@ -13,7 +15,7 @@ import toys.ToyBusiness;
 public class Kata6 {
 
     public static void main(String[] args) {
-        ToyBusiness enterprise = new ToyBusiness();
+        ToyBusiness enterprise = new AsianToyBusiness();
         ArrayList<Toy> toys = new ArrayList<>();
         
         String line = "";
