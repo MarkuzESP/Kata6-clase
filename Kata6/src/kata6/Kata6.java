@@ -3,10 +3,9 @@ package kata6;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.stream.Collectors;
-import toys.Helicopter;
-import toys.Car;
-import toys.SerialNumberGenerator;
+import toyProduct.Toy;
 import toys.ToyBusiness;
+
 /**
  * @author Marcos del Cristo Díaz Gil
  * Ingeniería del Software 2, Universidad de Las Palmas de Gran Canaria
@@ -15,8 +14,7 @@ public class Kata6 {
 
     public static void main(String[] args) {
         ToyBusiness enterprise = new ToyBusiness();
-        ArrayList<Car> carList = new ArrayList<>();
-        ArrayList<Helicopter> heliList = new ArrayList<>();
+        ArrayList<Toy> toys = new ArrayList<>();
         
         String line = "";
         Scanner input = new Scanner(System.in);
@@ -29,13 +27,9 @@ public class Kata6 {
             
             switch (line) {
                 case "car":
-                    System.out.println("Creando un coche...");
-                    carList.add(enterprise.createCar());
-                    break;
-                
                 case "heli": 
-                    System.out.println("Creando un helicóptero...");
-                    heliList.add(enterprise.createHeli());
+                    System.out.println("Creando un juguete...");
+                    toys.add(enterprise.createToy(line));
                     break;
                     
                 case "exit" :
@@ -46,12 +40,9 @@ public class Kata6 {
                     System.out.println("No se reconoce el comando.");
             }
         }
-        System.out.println("Coches construidos: " + carList.stream()
-                        .map(c -> c.getSerialNumber().toString())
-                        .collect(Collectors.joining(", ")));
-        
-        System.out.println("Helicópteros construidos: " + heliList.stream()
-                        .map(h -> h.getSerialNumber().toString())
-                        .collect(Collectors.joining(", ")));
+        System.out.println("Juguetes construidos: " + toys.stream()
+                .map(c -> c.toString())
+                .collect(Collectors.joining(", ")));
+
     }
 }
