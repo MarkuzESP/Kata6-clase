@@ -1,25 +1,21 @@
-package branches;
+package factories.regionalFactories;
 
-import business.ToyBusiness;
+import factories.ToyFactory;
 import toyProduct.Toy;
 import toyProduct.models.AsianCarToy;
 import toyProduct.models.AsianHelicopterToy;
 
-public class AsianToyBusiness extends ToyBusiness{
+public class AsianToyFactory extends ToyFactory{
 
     @Override
     public Toy createToy(String toyType) {
         switch(toyType){
             case "car":
                 AsianCarToy car = new AsianCarToy(this.generator.next());
-                car.pack();
-                car.label();
                 return car;
                 
             case "heli":
                 AsianHelicopterToy heli = new AsianHelicopterToy(this.generator.next());
-                heli.pack();
-                heli.label();
                 return heli;
                 
             default:
