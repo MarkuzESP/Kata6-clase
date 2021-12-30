@@ -18,19 +18,22 @@ public class Kata6 {
         ToyBusiness enterprise = new ToyBusiness();
         enterprise.add("car", new AmericanCarToyFactory());
         enterprise.add("heli", new AsianHelicopterToyFactory());
+        enterprise.add("sub", new EuropeanSubmarineToyFactory());
         ArrayList<Toy> toys = new ArrayList<>();
         
         String line = "";
         Scanner input = new Scanner(System.in);
         
         System.out.println("CLI de la Juguetera Díaz");
-        System.out.println("Teclee 'car' para generar un coche, 'heli' para generar un helicóptero");
+        System.out.println("Teclee 'car' para generar un coche, 'heli' para generar un helicóptero"
+        + "\n o 'sub' para generar un submarino");
         System.out.println("Teclee 'exit' para terminar la ejecución");
         while (!line.equalsIgnoreCase("exit")){
             line = input.nextLine();
             
             switch (line) {
                 case "car":
+                case "sub":
                 case "heli": 
                     System.out.println("Creando un juguete...");
                     toys.add(enterprise.produceToy(line));
